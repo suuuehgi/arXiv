@@ -8,6 +8,7 @@ Filenames longer than 255 characters will be truncated with respect to the autho
 `chmod +x arxiv` and put it somewhere in your `PATH`.
 
 Take any of the `new` or `recent` links from [arXiv](https://arxiv.org/) and substitute it under `Settings`.
+You might change the default style from `%title-%authors-%doi.pdf`.
 
 ## Example
 
