@@ -15,6 +15,7 @@ arguments['-v, --version'] = 'Print Version'
 # ================== Settings ====================
 
 url = "https://arxiv.org/list/astro-ph/new"
+style = "%title-%authors-%doi.pdf"
 
 # ================================================
 
@@ -85,8 +86,15 @@ if __name__ == "__main__":
     doi = doi.get_text()
     articles[nnn]["doi"] = doi
 
-    link = c.find_all("a", title="Download PDF")[0].get("href")
-    articles[nnn]["url"] = 'https://arxiv.org' + link
+    try:
+      link = c.find_all("a", title="Download PDF")[0].get('href')
+      print(link)
+    except IndexError:
+      link = c.find("a", title="Download PDF")
+      if link: link = link.get('href')
+
+    if link:
+      articles[nnn]["url"] = 'https://arxiv.org' + link
 
   # Get Title, Authors and Abstract
   meta = soup.find_all("div", class_="meta")
@@ -117,6 +125,11 @@ if __name__ == "__main__":
     print( 6 * ' ' + articles[paper]["authors"], '\n' )
     print( ' ' + articles[paper]["abstract"] )
 
+  translate = {}
+  translate['%title'] = "title"
+  translate['%authors'] = "authors"
+  translate['%doi'] = "doi"
+
   # Get user input list
   while True:
 
@@ -135,19 +148,51 @@ if __name__ == "__main__":
     url = articles[file]["url"]
     filename = '{}-{}-{}.pdf'.format(articles[file]["title"], articles[file]["authors"], articles[file]["doi"])
 
+    # Generate length filename
+    baselength = 0
+    spacers = style
+    for key in translate:
+      if key in style:
+        baselength += len(articles[file][translate[key]])
+      spacers = spacers.replace(key, articles[file][translate[key]])
+
+    baselength += len(spacers)
+
+
     # EXT4 limits filenames to 255 characters
 
-    if len(filename) > 254:
+    if baselength > 254:
 
-      filename = articles[file]["title"] + '-'
+      baselength = 0
+      baselength += len(spacers)
+      for key in translate:
+        if key in style and not key == '%authors':
+          baselength += len(articles[file][translate[key]])
 
-      for author in articles[file]["authors"].split():
-        if len(author) + len(filename) + len(articles[file]["doi"]) + 5 < 255:
-          filename += author.strip()
 
-      filename = filename[:-1] + '-' + articles[file]["doi"] + ".pdf"
+      for author in articles[file]["authors"].split(','):
+        if baselength + len(author) + 1 < 255:
+          authors += author.strip() + ','
+
+      # Generate filename
+      filename = style
+
+      for key in translate:
+        if not key == '%authors':
+          filename = filename.replace(key, articles[file][translate[key]])
+
+      filename = filename.replace('%authors', authors[:-1])
+
       print(color.BOLD + 'Warning:' + color.END + 'Too many authors for |filename| < 256.')
       print('Truncating to ', filename)
+
+    else:
+
+      # Generate filename
+      filename = style
+
+      for key in translate:
+        filename = filename.replace(key, articles[file][translate[key]])
 
     # Download
     subprocess.call(["wget", '--quiet', '--show-progress', '--header', "User-Agent: Mozilla/5.0", "--output-document", '{}'.format(filename), url])
