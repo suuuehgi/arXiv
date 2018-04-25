@@ -1,7 +1,7 @@
 # arXiv
 Get your daily arXiv digest
 
-This will give you a complete list with title, author and abstract. You can then enter a list of numbers to download as `{title}-{authors}-{doi}.pdf`.
+This will give you a complete list with title, author and abstract. You can then enter a list of numbers to download.
 Filenames longer than 255 characters will be truncated with respect to the authors.
 
 ## Setup
