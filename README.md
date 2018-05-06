@@ -2,13 +2,28 @@
 Get your daily arXiv digest
 
 This will give you a complete list with title, author and abstract. You can then enter a list of numbers to download.
-Filenames longer than 255 characters will be truncated with respect to the authors.
+Filenames longer than the maximum filename length supported by the filesystem will be truncated with respect to the authors.
+
+## Requirements
+
+ - `python3`
+ - `python-beautifulsoup4` (`pip install bs4` if you use `python-pip` package)
+ - `wget`
 
 ## Setup
 `chmod +x arxiv` and put it somewhere in your `PATH`.
+See `echo $PATH` for locations or alter `PATH`.
 
-Take any of the `new` or `recent` links from [arXiv](https://arxiv.org/) and substitute it under `Settings`.
-You might change the default style from `%title-%authors-%doi.pdf`.
+arxiv listens on a config file in `.config/arxiv.conf`. If it is not present, it will be generated.
+
+**E.g.**
+```
+[DEFAULT]
+url = https://arxiv.org/list/cond-mat.mes-hall/recent, https://arxiv.org/list/q-bio/new, https://arxiv.org/list/astro-ph/recent
+style = $authors-$title.pdf
+```
+
+If `style` is not set, `%title-%authors-%doi.pdf` will be set instead.
 
 ## Example
 
