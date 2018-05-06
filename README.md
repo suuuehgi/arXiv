@@ -42,3 +42,29 @@ If `style` is not set, `%title-%authors-%doi.pdf` will be set instead.
 
 Download (2 12 ..): 1 3 5 6
 ```
+
+```
+[...]
+
+   92 Gaia Data Release 2: Summary of the variability processing & analysis results
+      Holl,Audard,Nienartowicz,Fombelle,Marchal,Mowlavi,Clementini,Ridder,Evans,Guy,Lanzafame,Lebzelter,Rimoldini,Roelens,Zucker,Distefano,Garofalo,Lecoeur-Taïbi,Lopez,Molinaro,Muraveva,Panahi,Regibo,Ripepi,Sarro,Aerts,Anderson,Charnas,Barblan,Blanco-Cuaresma,Busso,Cuypers,Angeli,Glass,Grenon,Juhász,Kochoska,Koubsky,Lanza,Leccia,Lorenz,Marconi,Marschalk,Mazeh,Messina,Mignard,Moitinho,Molnár,Morgenthaler,Musella,Ordenovic,Ordóñez,Pagano,Palaversa,Pawlak,Plachy,Prša,Riello,Süveges,Szabados
+
+[...]
+
+Download (2 12 ..): 92
+
+92 Warning: Too many authors for |filename| <= 255 (max. of your filesystem)
+
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+Truncating ...
+
+Holl,Audard,Nienartowicz,Fombelle,Marchal,Mowlavi,Clementini,Ridder,Evans,Guy,Lanzafame,Lebzelter,Rimoldini,Roelens,Zucker,Distefano,Garofalo,Lecoeur-Taïbi,Lopez,Molinaro,Muraveva,Panahi,Regibo,Ripepi,Sarro,Aerts,Anderson,Charnas,Barblan,Blanco-Cuaresma,Busso,Cuypers,Angeli,Glass,Grenon,Juhász,Kochoska,Koubsky,Lanza,Leccia,Lorenz,Marconi,Marschalk,Mazeh,Messina,Mignard,Moitinho,Molnár,Morgenthaler,Musella,Ordenovic,Ordóñez,Pagano,Palaversa,Pawlak,Plachy,Prša,Riello,Süveges,Szabados
+
+to ...
+
+Holl,Audard,Nienartowicz,Fombelle,Marchal,Mowlavi,Clementini,Ridder,Evans,Guy,Lanzafame,Lebzelter,Rimoldini,Roelens,Zucker,Distefano,Garofalo
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+Saving:  Gaia Data Release 2: Summary of the variability processing & analysis results-Holl,Audard,Nienartowicz,Fombelle,Marchal,Mowlavi,Clementini,Ridder,Evans,Guy,Lanzafame,Lebzelter,Rimoldini,Roelens,Zucker,Distefano,Garofalo-arXiv:1804.09373.pdf
+
+: Summary of the variability process  79%[======================================================>               ]   3.91M   505KB/s    eta 3s
+```
